@@ -1,0 +1,46 @@
+<!-- START CONTAINER FLUID -->
+<div class="container-fluid container-fixed-lg bg-white">
+  <!-- START PANEL -->
+  <div class="panel panel-transparent">
+    <div class="panel-heading">
+      <div class="panel-title">Holding Distributions
+    <div width=100% style="text-align:right;">
+    </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+<% if @distributions && @distributions.size > 0 %>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed" id="condensedTable">
+          <thead>
+      <tr>
+      </tr>
+          <tr>
+            <th><= 5M</th>
+            <th><= 1H</th>
+            <th><= 12H</th>
+            <th><= 1D</th>
+            <th><= 2D</th>
+            <th><= 1W</th>
+            <th><= 1M</th>
+            <th><= 1Y</th>
+            <th>> 1Y</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% index = 0 %>
+              <% while index < @distributions.size %>
+                  <td><%= @distributions[index] %></td>
+                <% index += 1 %>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
+  <!-- END PANEL -->
+</div>

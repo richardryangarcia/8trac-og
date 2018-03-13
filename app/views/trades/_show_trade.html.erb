@@ -1,0 +1,11 @@
+<tr>
+	<td class="v-align-middle">
+		<%= link_to @trade.instrument.symbol,:controller => 'instruments',:action => 'show', :id => @trade.instrument_id %>
+		<%#=@trade.instrument.symbol %></td>
+	<td class="v-align-middle"><%= @trade.initial_created_datetime.strftime("%b %d, %Y %l:%M %p") %></td>
+	<td class="v-align-middle"><%= number_with_precision(@trade.effective_buy_price, precision: 2) %></td>
+	<td class="v-align-middle"><%= number_with_precision(@trade.total_buy_quantity, precision: 0) %></td>
+	<td class="v-align-middle"><%= @trade.closing_created_datetime.strftime("%b %d, %Y %l:%M %p") %></td>
+	<td class="v-align-middle"><%= number_with_precision(@trade.effective_sell_price, precision: 2) %></td>
+	<td class="v-align-middle"><%= number_with_precision((@trade.realized_gains), precision: 2) %></td>
+</tr>

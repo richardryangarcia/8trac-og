@@ -1,0 +1,62 @@
+<!-- START PANEL -->
+<div class="panel panel-transparent">
+  <div class="panel-heading">
+    <div class="panel-title">Brokers List
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-hover table-condensed dataTable no-footer" id="condensedTable">
+        <thead>
+        <tr>
+          <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user
+        Comman Practice Followed
+        -->
+          <th style="width:5%">ID</th>
+          <th style="width:10%">Active</th>
+          <th style="width:5%">Logo</th>
+          <th style="width:20%">Name</th>
+          <th style="width:20%">URL</th>
+          <th style="width:20%">Created At</th>
+          <th style="width:20%">Updated At</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @brokers.each do |broker| %>
+            <tr>
+              <td class="v-align-middle ">
+                <p><%= broker.id %></p>
+              </td>
+              <td class="v-align-middle ">
+                <p>
+                  <% if broker.active %>
+                    Enabled
+                  <% else %>
+                    Disabled
+                  <% end %>
+                </p>
+              </td>
+              <td class="v-align-middle ">
+                <img src="<%= image_path('broker_logos/' + broker.logo_file_name) %>" alt="logo" class="brand" data-src="<%= image_path('broker_logos/' + broker.logo_file_name) %>" data-src-retina="<%= image_path('broker_logos/' + broker.logo_file_name) %>" height="30">
+              </td>
+              <td class="v-align-middle">
+                <%= link_to broker.name, edit_broker_path(broker) %>
+              </td>
+              <td class="v-align-middle">
+                <%= link_to broker.url, "http://#{broker.url}" %>
+              </td>
+              <td class="v-align-middle">
+                <p><%= broker.created_at %></p>
+              </td>
+              <td class="v-align-middle">
+                <p><%= broker.updated_at %></p>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- END PANEL -->

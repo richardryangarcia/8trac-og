@@ -1,0 +1,19 @@
+/*
+ * This file is for the ajax response for the Broker Removal toggle
+ */
+<% if @error && !@error.nil? %>
+// Do something
+<% else %>
+// Users broker removed successfully, show success alert
+$("html, body").animate({ scrollTop: 0 }, "slow");
+var successDiv = $("#new_user_broker_success");
+successDiv.html("<strong>Success!</strong> You have unlinked your account successfully.");
+successDiv.removeClass('hidden');
+
+// Reload brokers list partial
+var brokerListDiv = $('#broker_list');
+brokerListDiv.html("<%= escape_javascript(render partial: "broker_list", locals: {}) %>");
+
+// Reinitialize switches
+loadSwitches();
+<% end %>

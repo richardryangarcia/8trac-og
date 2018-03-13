@@ -1,0 +1,35 @@
+<h3>8trac makes it easy to enjoy what matters the most in your life</h3>
+<p>
+  <small>
+    Create a 8trac account.
+  </small>
+</p>
+<%= simple_form_for(resource,  html: { class: 'p-t-15' }, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+  <div class="row form-inputs">
+    <div class="col-sm-12">
+      <%= f.input :email, required: true, class: "form-control", autofocus: true %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.input :password, required: true, class: "form-control", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.input :password_confirmation, class: "form-control", required: true %>
+    </div>
+  </div>
+  <div class="row m-t-10">
+    <div class="col-md-6">
+      <p>I agree to the <a href="#" class="text-info small">Pages Terms</a> and <a href="#" class="text-info small">Privacy</a>.</p>
+    </div>
+  </div>
+  <div class="form-actions">
+      <%= f.button :submit, "Create a new account", :class => "btn btn-primary btn-cons m-t-10" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>

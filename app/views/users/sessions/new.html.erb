@@ -1,0 +1,28 @@
+<!--- new stuff  -->
+<%= simple_form_for(resource, html: { class: 'p-t-15' }, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <!-- START Form Control-->
+  <div class="form-group form-group-default">
+    <div class="controls">
+      <%= f.input :email, required: true, autofocus: true, class: 'form-control', placeholder: 'JohnDoe@email.com' %>
+    </div>
+  </div>
+  <!-- END Form Control-->
+  <!-- START Form Control-->
+  <div class="form-group form-group-default">
+    <div class="controls">
+      <%= f.input :password, required: true, class: 'form-control', placeholder: 'Credentials' %>
+    </div>
+  </div>
+  <!-- START Form Control-->
+  <div class="row">
+    <div class="col-md-6 no-padding">
+      <div class="checkbox ">
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
+    </div>
+  </div>
+  <!-- END Form Control-->
+  <%= f.button :submit, "Log in", class: 'btn btn-primary btn-cons m-t-10' %>
+  <!--<button class="btn btn-primary btn-cons m-t-10" type="submit">Sign in</button>-->
+<% end %>
+<%= render "users/shared/links" %>

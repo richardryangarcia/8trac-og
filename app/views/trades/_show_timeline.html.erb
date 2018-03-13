@@ -1,0 +1,45 @@
+<!-- timeline-block -->
+<div class="timeline-block">
+  <% if @trade.realized_gains > 0.0 %>
+      <div class="timeline-point success">
+        <i class="pg-credit_card"></i>
+      </div>
+  <% else %>
+      <div class="timeline-point danger">
+        <i class="pg-shopping_cart"></i>
+      </div>
+  <% end %>
+  <!-- timeline-point -->
+  <div class="timeline-content">
+    <div class="card share full-width ">
+      <div class="card-header clearfix">
+        <h5 class="text-warning-dark pull-left fs-12"><%= @trade.order_type.capitalize rescue nil  %> <i class="fa fa-circle text-warning-dark fs-11"></i></h5>
+        <div class="pull-right small hint-text">
+          <i class="fa fa-times"></i> <%= number_with_precision(@trade.realized_gains, precision: 0) %>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="card-description">
+        <h5 class='hint-text no-margin'><%= @trade.instrument.name rescue nil  %></h5>
+        <h5 class="small hint-text no-margin"><%= link_to @trade.instrument.symbol,:controller => 'instruments',:action => 'show', :id => @trade.instrument_id %></h5>
+        <% if @trade.realized_gains > 0.0 %>
+            <h3 class="text-success"><%= number_to_currency(@trade.average_price) rescue nil %></h3>
+        <% else %>
+            <h3 class="text-warning"><%= number_to_currency(@trade.average_price) rescue nil %></h3>
+        <% end %>
+      </div>
+      <div class="card-footer clearfix">
+        <div class="pull-left"><span class="text-info"><%= @trade.state.capitalize rescue nil %></span> <span class="text-warning">(Trigger: <%= @trade.trigger rescue nil %>)</span></div>
+        <div class="pull-right hint-text">
+          <%= @trade.created_at.strftime("%A, %b %d") rescue nil %>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="event-date">
+      <h6 class="font-montserrat all-caps hint-text m-t-0"><%= @trade.side rescue nil  %></h6>
+      <small class="fs-12 hint-text"><%= @trade.created_at.strftime("%b %d, %Y %l:%M %p") rescue nil  %></small>
+    </div>
+  </div>
+  <!-- timeline-content -->
+</div>

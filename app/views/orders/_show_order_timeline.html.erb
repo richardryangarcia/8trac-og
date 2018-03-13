@@ -1,0 +1,53 @@
+<!-- timeline-block -->
+<div class="timeline-block">
+  <% if @order.side == "sell" %>
+      <div class="timeline-point success">
+        <i class="pg-credit_card"></i>
+      </div>
+  <% else %>
+      <div class="timeline-point warning">
+        <i class="pg-shopping_cart"></i>
+      </div>
+  <% end %>
+  <!-- timeline-point -->
+  <div class="timeline-content">
+    <div class="card share full-width ">
+      <div class="card-header clearfix">
+        <h5 class="text-warning-dark pull-left fs-12"><%= @order.order_type.capitalize %> <i class="fa fa-circle text-warning-dark fs-11"></i></h5>
+        <div class="pull-right small hint-text">
+          <i class="fa fa-times"></i>
+          <%= number_with_precision(@order.quantity, precision: 0) %>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="card-description">
+        <h5 class='hint-text no-margin'><%= @order.instrument.name %></h5>
+        <h5 class="small hint-text no-margin"><%= link_to @order.instrument.symbol,:controller => 'instruments',:action => 'show', :id => @order.instrument_id %></h5>
+        <% if @order.side == "sell" %>
+            <h3 class="text-success"><%= number_to_currency(@order.average_price) %></h3>
+        <% else %>
+            <h3 class="text-warning"><%= number_to_currency(@order.average_price) %></h3>
+        <% end %>
+
+      <span id="order_confidence_<%= @order.id %>">
+        <%= render :partial => 'add_confidence' %>
+      </span>
+      <span id="order_comments_<%= @order.id %>">
+        <%= render :partial => 'add_comment' %>
+      </span>
+      </div>
+      <div class="card-footer clearfix">
+        <div class="pull-left"><span class="text-info"><%= @order.state.capitalize %></span> <span class="text-warning">(Trigger: <%= @order.trigger %>)</span></div>
+        <div class="pull-right hint-text">
+          <%= @order.created_at.strftime("%A, %b %d") %>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="event-date">
+      <h6 class="font-montserrat all-caps hint-text m-t-0"><%= @order.side %></h6>
+      <small class="fs-12 hint-text"><%= @order.created_at.strftime("%b %d, %Y %l:%M %p") %></small>
+    </div>
+  </div>
+  <!-- timeline-content -->
+</div>

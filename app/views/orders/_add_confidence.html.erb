@@ -1,0 +1,25 @@
+<% if @order.confidence_level_id && @order.confidence_level_id.to_i > 0 %>
+  Certainty: <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= @order.confidence_level.name rescue nil %></p>
+<% else %>
+  <a href="#" onclick="jQuery('#order_certainty_form_<%= @order.id %>').toggle();return false;">Add Certainty Level</a><br>
+<% end %>
+
+<span id="order_certainty_form_<%= @order.id %>"  style="display:none;" >
+<%= form_for @order,url: orders_add_confidence_path, :html => {:method => :post, :role => "form"}, remote:true do |f| %>
+  <%= hidden_field_tag :id, @order.id %>
+
+    <div class="form-group-attached">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="btn-group btn-group-xs">
+          <button type='submit' name=confidence_level_id value=1 class="btn btn-default">Not Confident</button>
+          <button type='submit' name=confidence_level_id value=2 class="btn btn-default">Slightly Confident</button>
+          <button type='submit' name=confidence_level_id value=3 class="btn btn-default">Confident</button>
+          <button type='submit' name=confidence_level_id value=4 class="btn btn-default">Very Confident</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<br>
+</span>

@@ -1,0 +1,40 @@
+<%= form_for @user_broker, :html => {:method => :post, :role => "form"}, remote:true do |f| %>
+    <% if @error %>
+        <div class="alert alert-danger" id="new_user_broker_error"><%= @error %></div>
+    <% end %>
+
+    <div class="form-group-attached">
+    <div class="row">
+      <%= hidden_field_tag :brokers_id, @brokers_id%>
+      <%= hidden_field_tag :brokers_name, @brokers_name %>
+      <div class="col-sm-6">
+        <div class="form-group form-group-default">
+          <%= label_tag :username %>
+          <%= text_field_tag :username, params[:username], :class => "form-control" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group form-group-default">
+          <%= label_tag :password %>
+          <%= password_field_tag :password, params[:password], :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="p-t-20 clearfix p-l-10 p-r-10">
+        <div class="pull-left">
+          <p class="bold font-montserrat text-uppercase"></p>
+        </div>
+        <div class="pull-right">
+          <p class="bold font-montserrat text-uppercase"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 m-t-10 sm-m-t-10">
+      <%= submit_tag "Link Account", :class => "btn btn-primary btn-block m-t-5"  %>
+    </div>
+  </div>
+<% end %>

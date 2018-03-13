@@ -1,0 +1,42 @@
+<% if @order.notes && @order.notes.to_s.length > 0 %>
+  Comments:
+
+  <span id="show_order_comments_<%= @order.id %>">
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;<%= @order.notes.to_s %>   <a href="#" onclick="jQuery('#order_comment_form_<%= @order.id %>').toggle();jQuery('#show_order_comments_<%= @order.id %>').toggle();return false;">update</a></p>
+  </span>
+<% else %>
+  <a href="#" onclick="jQuery('#order_comment_form_<%= @order.id %>').toggle();jQuery('#show_order_comments_<%= @order.id %>').toggle();return false;">Add Comments</a>
+<% end %>
+
+<span id="order_comment_form_<%= @order.id %>"  style='display:none;' >
+<%= form_for @order,url: orders_add_comment_path, :html => {:method => :post, :role => "form"}, remote:true do |f| %>
+  <%= hidden_field_tag :id, @order.id %>
+    <% if @error %>
+        <div class="alert alert-danger" id="new_user_broker_error"><%= @error %></div>
+    <% end %>
+
+    <div class="form-group-attached">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group form-group-default">
+          <%= text_area_tag "order[notes]", @order.notes, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="p-t-20 clearfix p-l-10 p-r-10">
+        <div class="pull-left">
+          <p class="bold font-montserrat text-uppercase"></p>
+        </div>
+        <div class="pull-right">
+          <p class="bold font-montserrat text-uppercase">
+          <%= submit_tag "Save", :class => "btn btn-success btn-xs m-t-10"  %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</span>

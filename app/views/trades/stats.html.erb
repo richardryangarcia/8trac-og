@@ -1,0 +1,112 @@
+<!-- START CONTAINER FLUID -->
+<div class="container-fluid container-fixed-lg bg-white">
+  <!-- START PANEL -->
+  <div class="panel panel-transparent">
+    <div class="panel-heading">
+      <div class="panel-title">Stats
+    <div width=100% style="text-align:right;">
+    </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+
+
+    <div class="container-fluid container-fixed-lg">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-title">
+                Filters <%#= resource_name.to_s.humanize %>
+              </div>
+            </div>
+            <div class="panel-body">
+              <% @trade = Trade.find(1) %>
+              <%= simple_form_for(@trade, as: @trade, url: trades_stats_path(@trade), html: {method: :put, class: 'p-t-15'}) do |f| %>
+                  <%#= f.error_notification %>
+                  <div class="form-group">
+                    <%#= f.input :email, required: true, class: "form-control", autofocus: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.input :broker_id,:collection => @brokers,:label_method => :name,:value_method => :id,:label => "Broker" ,:include_blank => 'All Brokers' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.input :instrument_id,:collection => @symbols,:label_method => :symbol,:value_method => :id,:label => "Symbol" ,:include_blank => 'All Symbols' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.input :initial_last_transaction_datetime, as: :string,:label => "Date Start", input_html: { class: :datepicker } %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.input :closing_last_transaction_datetime, as: :string,:label => "Date End", input_html: { class: :datepicker } %>
+                  </div>
+                  <div class="form-actions">
+                    <%= f.button :submit, "Update", :class => "btn btn-primary btn-cons m-t-10" %>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<%# if @bins && @bins.size > 0 %>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed" id="condensedTable">
+          <thead>
+            <tr>
+             <div style="text-align:center;">
+               <%#= will_paginate @trades %>
+             </div>
+            </tr>
+            <tr>
+              <th>Total Profit</th>
+              <th>Total Loss</th>
+              <th>Average Return</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr>
+              <td><%= number_to_currency(@total_profit) %></td>
+              <td><%= number_to_currency(@total_loss) %></td>
+              <td><%= number_to_currency(@average_return) %></td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th>Best Trade</th>
+              <th>Worst Trade</th>
+              <th>Average Win</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr>
+              <td><%= number_to_currency(@max_return) %></td>
+              <td><%= number_to_currency(@min_return) %></td>
+              <td><%= number_to_currency(@average_win) %></td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th>Average Loss</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr>
+              <td><%= number_to_currency(@average_loss) %></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<%# end %>
+  <!-- END PANEL -->
+</div>

@@ -1,0 +1,13 @@
+/*
+ * This file is for the ajax response for the Broker Login form
+ */
+
+  // Form submitted successfully, close the modal and show success alert
+  console.log("made it here ")
+
+  var successDiv = $("#.overlay-close");
+  successDiv.removeClass('.overlay-close');
+
+  // Reload brokers list partial
+  var brokerListDiv = $('#overlay-search');
+  brokerListDiv.html("<%= escape_javascript(render partial: "show", locals: {}) %>");

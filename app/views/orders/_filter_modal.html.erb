@@ -1,0 +1,44 @@
+<!-- MODAL STICK UP  -->
+<div class="modal fade stick-up" data-keyboard="false" data-backdrop="static" id="filterOrdersModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header clearfix text-left">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i></button>
+        <h5>Filter Orders</h5>
+      </div>
+      <div class="modal-body">
+        <div id="filter_order">
+          <%#= simple_form_for(@order, as: @order, url: orders_path_url(@order), html: {method: :post, class: 'p-t-15'}) do |f| %>
+              <%#= f.error_notification %>
+              <div class="form-group">
+                <%#= f.input :email, required: true, class: "form-control", autofocus: true %>
+              </div>
+              <div class="form-group">
+                <%#= f.input :broker_id,:collection => @brokers,:label_method => :name,:value_method => :id,:label => "Broker" ,:include_blank => 'All Brokers' %>
+              </div>
+              <div class="form-group">
+                <%#= f.input :instrument_id,:collection => @symbols,:label_method => :symbol,:value_method => :id,:label => "Symbol" ,:include_blank => 'All Symbols' %>
+              </div>
+              <div class="form-group">
+                <%#= f.input :last_transaction_at, as: :string,:label => "Date Start", input_html: { class: :datepicker } %>
+              </div>
+              <div class="form-group">
+                <%#= f.input :last_transaction_at, as: :string,:label => "Date End", input_html: { class: :datepicker } %>
+              </div>
+              <div class="form-actions">
+                <%#= f.button :submit, "Update", :class => "btn btn-primary btn-cons m-t-10" %>
+              </div>
+          <%# end %>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- END MODAL STICK UP  -->

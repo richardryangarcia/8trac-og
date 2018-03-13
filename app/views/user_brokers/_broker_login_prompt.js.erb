@@ -1,0 +1,25 @@
+/*
+ * This file is for the ajax response for the Broker Login form
+ */
+<% if @error && !@error.nil? %>
+  // Reload form with access to instance variables including @error, @brokers_id, @brokers_name
+  var brokerLoginPromptDiv = $('#broker_login_prompt');
+  brokerLoginPromptDiv.html("<%= escape_javascript(render partial: "broker_login_prompt.html.erb", locals: {}) %>");
+<% else %>
+  // Form submitted successfully, close the modal and show success alert
+  $("#linkBrokerModal").modal('hide');
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  var successDiv = $("#new_user_broker_success");
+  successDiv.html("<strong>Success!</strong> You have linked your <%= @brokers_name %> account successfully.");
+  successDiv.removeClass('hidden');
+
+  // Reset modal form values and errors
+  $('#new_user_broker')[0].reset();
+
+  // Reload brokers list partial
+  var brokerListDiv = $('#broker_list');
+  brokerListDiv.html("<%= escape_javascript(render partial: "broker_list", locals: {}) %>");
+
+  // Reinitialize switches
+  loadSwitches();
+<% end %>

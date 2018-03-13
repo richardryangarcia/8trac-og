@@ -1,0 +1,90 @@
+<!-- START Orders Header w/Pagination -->
+<div class="container-fluid container-fixed-lg bg-white" style="margin-bottom: -40px;">
+  <!-- START PANEL -->
+  <div class="panel panel-transparent">
+    <div class="panel-heading">
+      <div class="panel-title">Trades (<%= @trades_count rescue 0 %>)
+        <div width=100% style="text-align:right;">
+          <%= link_to :update_users_orders do %>
+              <span class="title">Update</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <% if @trades && @trades.size > 0 %>
+      <div style="text-align:center;">
+        <%= will_paginate @trades %>
+      </div>
+    <% end %>
+  </div>
+  <!-- END PANEL -->
+</div>
+<!-- End Orders Header w/Pagination -->
+
+<!-- Start tabs -->
+
+<div class="panel">
+  <ul class="nav nav-tabs nav-tabs-simple" role="tablist" data-init-reponsive-tabs="collapse">
+    <li class="active">
+      <a href="#tabOrdersTable" data-toggle="tab" role="tab">Table</a>
+    </li>
+    <li>
+      <a href="#tabOrdersTimeline" data-toggle="tab" role="tab">Timeline</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tabOrdersTable">
+      <div class="row">
+        <div class="col-md-12">
+
+          <% if @trades && @trades.size > 0 %>
+          <!-- start table -->
+          <div class="table-responsive">
+            <table class="table table-hover table-condensed" id="condensedTable">
+              <thead>
+              <tr>
+                <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user
+              Comman Practice Followed
+              -->
+              <th style="width:8%">Symbol</th>
+              <th style="width:30%">Initial Buy</th>
+              <th style="width:8%">Average Buy Price</th>
+              <th style="width:8%">Quantity</th>
+              <th style="width:30%">Final Sell</th>
+              <th style="width:8%">Average Sell Price</th>
+              <th style="width:8%">Realized</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% for @trade in @trades %>
+                  <%= render :partial => 'show_trade' %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <!-- end table -->
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane " id="tabOrdersTimeline">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- start timeline -->
+          <div class="container-fluid sm-p-l-5 bg-master-lighter ">
+            <div class="timeline-container top-circle">
+              <section class="timeline">
+                <% for @trade in @trades %>
+                    <%= render :partial => 'show_timeline' %>
+                <% end %>
+              </section>
+            </div>
+          </div>
+          <!-- end timeline -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End tabs -->

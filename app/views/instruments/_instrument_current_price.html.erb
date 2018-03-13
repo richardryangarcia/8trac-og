@@ -1,0 +1,4 @@
+<h2 class="pull-left m-l-50 <%= (@instrument.up?) ? ('text-success') : ('text-danger')%>">
+  <span class="bold"><%= number_to_currency(@instrument.last_trade_price, precision: 2, unit: "") rescue nil %></span>
+  <span class="<%= (@instrument.up?) ? ('text-success') : ('text-danger')%> fs-12"><%= number_to_currency(((@instrument.last_trade_price - @instrument.open_price)), precision: 2, unit: "") rescue nil %></span>
+</h2>

@@ -1,0 +1,99 @@
+<%= render :partial => 'filter_modal' %>
+<!-- START Orders Header w/Pagination -->
+<div class="container-fluid container-fixed-lg bg-white" style="margin-bottom: -40px;">
+  <!-- START PANEL -->
+  <div class="panel panel-transparent">
+    <div class="panel-heading">
+      <div class="panel-title">Orders (<%= @orders_count rescue 0 %>)
+        <div width=100% style="text-align:right;">
+          <%= link_to :update_users_orders do %>
+              <span class="title">Update</span>
+          <% end %>
+        </div>
+
+
+        <div id=filter_modal>
+        <div class="filterOrdersModalToggler">
+          <input type="checkbox" id="filters_link" class="js-switch"/>
+        </div>
+      </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <% if @orders && @orders.size > 0 %>
+      <div style="text-align:center;">
+        <%= will_paginate @orders %>
+      </div>
+    <% end %>
+  </div>
+  <!-- END PANEL -->
+</div>
+<!-- End Orders Header w/Pagination -->
+
+<!-- Start tabs -->
+
+<div class="panel">
+  <ul class="nav nav-tabs nav-tabs-simple" role="tablist" data-init-reponsive-tabs="collapse">
+    <li class="active">
+      <a href="#tabOrdersTable" data-toggle="tab" role="tab">Table</a>
+    </li>
+    <li>
+      <a href="#tabOrdersTimeline" data-toggle="tab" role="tab">Timeline</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tabOrdersTable">
+      <div class="row">
+        <div class="col-md-12">
+
+          <% if @orders && @orders.size > 0 %>
+          <!-- start table -->
+          <div class="table-responsive">
+            <table class="table table-hover table-condensed" id="condensedTable">
+              <thead>
+              <tr>
+                <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user
+              Comman Practice Followed
+              -->
+                <th style="width:15%">Price</th>
+                <th style="width:15%">Symbol</th>
+                <th style="width:15%">Quantity</th>
+                <th style="width:15%">Side</th>
+                <th style="width:25%">Created</th>
+                <th style="width:15%">State</th>
+                <th style="width:15%">Trigger</th>
+                <th style="width:15%">Type</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% for @order in @orders %>
+                  <%= render :partial => 'show_order' %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <!-- end table -->
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane " id="tabOrdersTimeline">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- start timeline -->
+          <div class="container-fluid sm-p-l-5 bg-master-lighter ">
+            <div class="timeline-container top-circle">
+              <section class="timeline">
+                <%# for @order in @orders %>
+                    <%#= render :partial => 'show_order_timeline' %>
+                <%# end %>
+              </section>
+            </div>
+          </div>
+          <!-- end timeline -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End tabs -->

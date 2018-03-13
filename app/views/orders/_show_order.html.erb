@@ -1,0 +1,12 @@
+	<tr>
+	<td class="v-align-middle"><%= number_to_currency(@order.average_price) %></td>
+	<td class="v-align-middle">
+		<%= link_to @order.instrument.symbol,:controller => 'instruments',:action => 'show', :id => @order.instrument_id %>
+	</td>
+	<td class="v-align-middle"><%= number_with_precision(@order.quantity, precision: 0) %></td>
+	<td class="v-align-middle"><%= @order.side %></td>
+	<td class="v-align-middle"><%= @order.created_at.strftime("%b %d, %Y %l:%M %p") %></td>
+	<td class="v-align-middle"><%= @order.state %></td>
+	<td class="v-align-middle"><%= @order.trigger %></td>
+	<td class="v-align-middle"><%= @order.order_type %></td>
+	</tr>

@@ -1,0 +1,119 @@
+<div class="alert alert-success hidden" id="new_user_broker_success"></div>
+
+<!-- MODAL STICK UP  -->
+<div class="modal fade stick-up" data-keyboard="false" data-backdrop="static" id="linkBrokerModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header clearfix text-left">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+        </button>
+        <h5><span class="semi-bold link-broker-name-placeholder"></span> Information</h5>
+        <p>
+          Please login this one time to link your account. <br>
+          Your submission will not be stored and will be sent directly to
+          <span class="link-broker-name-placeholder"></span> for verification.
+        </p>
+      </div>
+      <div class="modal-body">
+        <div id="broker_login_prompt">
+          <%= render :partial => 'user_brokers/broker_login_prompt' %>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- END MODAL STICK UP  -->
+
+<!-- MODAL SLIDE UP SMALL  -->
+<div class="modal fade slide-up disable-scroll" id="modalSlideUpSmall" tabindex="-1" role="dialog" aria-hidden="false">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-body text-center m-t-20">
+          <h4 class="no-margin p-b-10">Coming Soon!</h4>
+          <button type="button" class="btn btn-primary btn-cons" data-dismiss="modal">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MODAL SLIDE UP -->
+
+<div class="container-fluid container-fixed-lg">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            Edit <%= resource_name.to_s.humanize %>
+          </div>
+        </div>
+        <div class="panel-body">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: 'p-t-15'}) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-group">
+                <%= f.input :email, required: true, class: "form-control", autofocus: true %>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% end %>
+              </div>
+              <div class="form-group">
+                <%= f.input :password, autocomplete: "off", class: "form-control", hint: "leave it blank if you don't want to change it", required: false %>
+
+              </div>
+              <div class="form-group">
+                <%= f.input :password_confirmation, class: "form-control", required: false %>
+              </div>
+              <div class="form-group">
+                <%= f.input :current_password, class: "form-control", hint: "we need your current password to confirm your changes", required: true %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, "Update", :class => "btn btn-primary btn-cons m-t-10" %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid container-fixed-lg">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <div class="panel-title">
+            Link your brokerage firms
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <div class="col-sm-12" id="broker_list">
+            <%= render :partial => 'user_brokers/broker_list' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid container-fixed-lg">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            Cancel my account
+          </div>
+        </div>
+        <div class="panel-body">
+          <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

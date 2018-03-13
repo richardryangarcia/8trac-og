@@ -1,0 +1,32 @@
+<% @brokers = Broker.all %>
+<% @user_brokers = UserBroker.get_user_brokers(current_user.id) %>
+<% @brokers.each do |broker| %>
+    <% ub_index = @user_brokers.find_index {|ub| ub.brokers_id == broker.id} %>
+    <% user_brokers_id = @user_brokers[ub_index].id if ub_index && !ub_index.nil? %>
+    <div class="col-sm-12">
+      <div class="form-group form-group-default input-group">
+        <span class="input-group-addon">
+          <img src="<%= image_path("broker_logos/#{broker.logo_file_name}") %>"
+               alt="logo" class="" data-src="<%= image_path("broker_logos/#{broker.logo_file_name}") %>"
+               data-src-retina="<%= image_path("broker_logos/#{broker.logo_file_name}") %>" height="30">
+        </span>
+        <label class="inline"><%= broker.name %></label>
+        <span class="input-group-addon bg-transparent">
+          <div
+            <% if broker.active %>
+              class="brokerLinkModalToggler"
+            <% else %>
+              class="comingSoonModalToggler"
+            <% end %>
+            data-user-broker-id="<%= user_brokers_id %>"
+            data-broker-name="<%= broker.name %>"
+            data-broker-id="<%= broker.id %>"
+          >
+            <input type="checkbox" id="broker-link-<%= broker.id %>" class="js-switch"
+                   <%= 'disabled="disabled"' if !broker.active %>
+                   <%= 'checked' if !user_brokers_id.nil? %>/>
+          </div>
+        </span>
+      </div>
+    </div>
+<% end %>

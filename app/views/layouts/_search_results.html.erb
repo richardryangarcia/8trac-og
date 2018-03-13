@@ -1,0 +1,9 @@
+<% if @instruments && @instruments.size > 0 %>
+  <ul class="list-unstyled">
+    <% for @instrument in @instruments %>
+    <h5 class="m-b-5" >
+      <li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/instruments/show?id=<%= @instrument.id %>" ><%= @instrument.name rescue nil %> (<%= @instrument.symbol rescue nil %>)</a></li>
+    </h5>
+    <% end %>
+  </ul>
+<% end %>

@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704054704) do
+ActiveRecord::Schema.define(version: 20180313214555) do
+
+  create_table "instruments", force: :cascade do |t|
+    t.string  "name",                 limit: 250
+    t.string  "symbol",               limit: 50
+    t.string  "state",                limit: 50
+    t.string  "tradeable",            limit: 50
+    t.string  "robinhood_id",         limit: 250
+    t.decimal "open_price",                         precision: 13, scale: 10
+    t.decimal "high",                               precision: 13, scale: 10
+    t.decimal "low",                                precision: 13, scale: 10
+    t.decimal "volume",                             precision: 15, scale: 15
+    t.decimal "average_volume",                     precision: 15, scale: 15
+    t.decimal "high_fifty_two_weeks",               precision: 13, scale: 10
+    t.decimal "dividend_yield",                     precision: 13, scale: 10
+    t.decimal "low_fifty_two_weeks",                precision: 13, scale: 10
+    t.decimal "market_cap",                         precision: 13, scale: 10
+    t.text    "description",          limit: 65535
+    t.text    "fundamentals_url",     limit: 65535
+    t.date    "opening_date"
+    t.date    "closing_date"
+    t.integer "total_supply",         limit: 4,                               default: 0,   null: false
+    t.integer "participant_limit",    limit: 4,                               default: 0,   null: false
+    t.decimal "rights_for_revenue",                 precision: 13, scale: 10, default: 0.0
+    t.decimal "fundraising_amount",                 precision: 13, scale: 10, default: 0.0
+  end
 
   create_table "user_brokers", id: false, force: :cascade do |t|
     t.integer "id",         limit: 4,   default: 0, null: false
@@ -34,6 +59,9 @@ ActiveRecord::Schema.define(version: 20170704054704) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.string   "first_name",             limit: 250
+    t.string   "last_name",              limit: 250
+    t.string   "user_type",              limit: 250
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

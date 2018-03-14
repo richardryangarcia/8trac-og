@@ -6,76 +6,32 @@ class Robinhood < ActiveRecord::Base
 	require 'net/https'
 
 
-  def self.uri_object(key)
-    url = ""
-    case key.to_s
-      when "login"
-        url = "https://api.robinhood.com/api-token-auth/"
-      when "investment_profile"
-        url = "https://api.robinhood.com/user/investment_profile/"
-      when "accounts"
-        url = "https://api.robinhood.com/accounts/"
-      when "ach_iav_auth"
-        url = "https://api.robinhood.com/ach/iav/auth/"
-      when "ach_relationships"
-        url = "https://api.robinhood.com/ach/relationships/"
-      when "ach_transfers"
-        url = "https://api.robinhood.com/ach/transfers/"
-      when "applications"
-        url = "https://api.robinhood.com/applications/"
-      when "dividends"
-        url = "https://api.robinhood.com/dividends/"
-      when "edocuments"
-        url = "https://api.robinhood.com/documents/"
-      when "instruments"
-        url = "https://api.robinhood.com/instruments/"
-      when "margin_upgrades"
-        url = "https://api.robinhood.com/margin/upgrades/"
-      when "markets"
-        url = "https://api.robinhood.com/markets/"
-      when "notifications"
-        url = "https://api.robinhood.com/notifications/"
-      when "orders"
-        url = "https://api.robinhood.com/orders/"
-      when "password_reset"
-        url = "https://api.robinhood.com/password_reset/request/"
-      when "portfolio"
-        url = "https://api.robinhood.com/accounts/5QT61676/portfolio/"
+	def self.spotify_login
 
-      when "portfolios"
-        url = "https://api.robinhood.com/portfolios/"
-      when "positions"
-        url = "https://api.robinhood.com/positions/"
-      when "quotes"
-        url = "https://api.robinhood.com/quotes/"
-      when "document_requests"
-        url = "https://api.robinhood.com/upload/document_requests/"
-      when "user"
-        url = "https://api.robinhood.com/user/"
-      when "watchlists"
-        url = "https://api.robinhood.com/watchlists/"
-    end
-
-    uri = URI.parse(url.to_s)
-    return uri
-  end
-
-	def self.login(user, pass,uri = uri_object("login"))
-		response = Net::HTTP.post_form(uri, {"password" => "#{pass.to_s}", "username" => "#{user.to_s}"})
-		response = JSON.parse(response.body)
-   		token_string = response["token"]
-    	return token_string
 	end
 
-  def self.account_info(token="",  uri = uri_object("accounts"))
+	def self.spotify_album(token="31140a8194cf4bf9847bfe2090ab37c3")
+
+		url = "https://api.spotify.com/v1/albums?ids=0sNOF9WDwhWunNAHPD3Baj"
+		uri = URI.parse(url.to_s)
+
+
 		https = Net::HTTP.new(uri.host, uri.port)
 		https.set_debug_output($stdout)
 		https.use_ssl = true
-		request = Net::HTTP::Get.new(uri.path,  initheader = {
+		query = uri.path
+    if uri.query && uri.query.to_s.length > 0
+      query += "?"
+      query += uri.query
+    end
+puts "\n\n\n\n#{uri}\n\n"
+		request = Net::HTTP::Get.new(query,  initheader = {
 
       			"Accept" => "application/json",
-            "Authorization" => "Token #{token}"
+            "Authorization" => "#{token}"
 			})
+
+		puts "\n\n\n\n#{request}\n\n"
 
     response = https.request(request)
     response = JSON.parse(response.body) rescue nil
@@ -83,21 +39,8 @@ class Robinhood < ActiveRecord::Base
 		return response
   end
 
-  def self.get_porfolio_info(token="", uri=uri_object("portfolio"))
-		https = Net::HTTP.new(uri.host, uri.port)
-		https.set_debug_output($stdout)
-		https.use_ssl = true
-		request = Net::HTTP::Get.new(uri.path,  initheader = {
 
-      			"Accept" => "application/json",
-            "Authorization" => "Token #{token}"
-			})
 
-    response = https.request(request)
-    response = JSON.parse(response.body) rescue nil
-
-		return response
-  end
 
 
   def self.place_order(account="https://api.robinhood.com/accounts/5QT61676/", instrument="https://api.robinhood.com/instruments/14290213-51ba-4678-8e3d-0f642381d26c/", quantity=1, bid_price = "", transaction="",trigger="immediate",type="market")
@@ -383,78 +326,9 @@ class Robinhood < ActiveRecord::Base
 	end
 
 
-  def ask_price
-  	return @data['ask_price']
-  end
 
-  def ask_size
-  	return @data['ask_size']
-  end
 
-  def bid_price
-  	return @data['bid_price']
-  end
 
-  def bid_size
-  	return @data['bid_size']
-  end
-
-  def previous_close
-  	return @data['previous_close']
-  end
-
-  def previous_close_date
-  	return @data['previous_close_date']
-  end
-
-  def adjusted_previous_close
-  	return @data['adjusted_previous_close']
-  end
-
-  def last_trade_price
-  	return @data['last_trade_price']
-  end
-
-  def last_updated_at
-  	return @data['updated_at']
-  end
-
-  def self.investment_profile(token,uri = uri_object("investment_profile"))
-  end
-  def self.accounts(token,uri = uri_object("accounts"))
-  end
-  def self.ach_iav_auth(token,uri = uri_object("ach_iav_auth"))
-  end
-  def self.ach_relationships(token,uri = uri_object("ach_relationships"))
-  end
-  def self.ach_transfers(token,uri = uri_object("ach_transfers"))
-  end
-  def self.applications(token,uri = uri_object("applications"))
-  end
-  def self.dividends(token,uri = uri_object("dividends"))
-  end
-  def self.edocuments(token,uri = uri_object("edocuments"))
-  end
-  def self.instruments(token,uri = uri_object("instruments"))
-  end
-  def self.margin_upgrades(token,uri = uri_object("margin_upgrades"))
-  end
-  def self.markets(token,uri = uri_object("markets"))
-  end
-  def self.notifications(token,uri = uri_object("notifications"))
-  end
-  def self.password_reset(token,uri = uri_object("password_reset"))
-  end
-  def self.positions(token,uri = uri_object("positions"))
-  end
-  def self.quotes_endpoint(token,uri = uri_object("quotes"))
-  end
-  def self.document_requests(token,uri = uri_object("document_requests"))
-  end
-  def self.user(token,uri = uri_object("user"))
-  end
-  def self.watchlists(token,uri = uri_object("watchlists"))
-  end
 
 
 end

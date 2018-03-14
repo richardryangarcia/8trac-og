@@ -12,6 +12,21 @@
       <%= f.input :email, required: true, class: "form-control", autofocus: true %>
     </div>
   </div>
+  <div class="row form-inputs">
+    <div class="col-sm-12">
+      <%= f.input :first_name, required: true, class: "form-control", autofocus: true %>
+    </div>
+  </div>
+  <div class="row form-inputs">
+    <div class="col-sm-12">
+      <%= f.input :last_name, required: true, class: "form-control", autofocus: true %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.input :user_type, :collection => %w[Artist Fan Producer ], class: "form-control", :required => true %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-12">
       <%= f.input :password, required: true, class: "form-control", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>

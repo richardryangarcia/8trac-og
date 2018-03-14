@@ -1,48 +1,49 @@
  <% if @instruments && @instruments.size > 0 %>
      <!-- START CONTAINER FLUID -->
-     <div class="container-fluid container-fixed-lg bg-white">
+     <!-- bg-white -->
+     <div class="container-fluid container-fixed-lg ">
        <!-- START PANEL -->
        <div class="panel panel-transparent">
          <div class="panel-heading">
-           <div class="panel-title">Instruments (<%= @instruments_count[0] %>)
+           <div class="panel-title">Open Projects (<%= @instruments_count[0] %>)
            </div>
            <div class="clearfix"></div>
          </div>
-         <div class="panel-body">
-           <div class="table-responsive">
-             <table class="table table-hover table-condensed" id="condensedTable">
-                  <thead>
-					  <tr>
-						 <div style="text-align:center;"> 
-							 <%= will_paginate @instruments %>
-						 </div>
-					  </tr>
-                    <tr>
-                      <th>Name</th>
-                      <th>Symbol</th>
-                      <th>State</th>
-                      <th>Tradeable</th>
-                      <th>List Date</th>
-                    </tr>
-                  </thead>
-               <tbody>
-               <% for @instrument in @instruments %>
-                   <tr>
-                     <td class="v-align-middle"><%= @instrument.name rescue nil %></td>
-                     <td class="v-align-middle"><%= @instrument.symbol rescue nil %></td>
-                     <td class="v-align-middle"><%= @instrument.state rescue nil %></td>
-                     <td class="v-align-middle"><%= (@instrument.tradeable) ? ('Yes') : ('No')%></td>
-                     <td class="v-align-middle"><%= @instrument.list_date.strftime("%b %d, %Y") rescue nil %></td>
-                   </tr>
-               <% end %>
-               </tbody>
-             </table>
+
+
+
+
+
+         <% for @instrument in @instruments %>
+          <a href="/instruments/show?id=<%= @instrument.id %>" >
+
+          <div class="col-md-4">
+           <div class="card no-border card-transparent">
+               <div class="card-header separator">
+                   <div class="card-title" style="margin:10px"><b><%= @instrument.name rescue nil %></b> by <%= @instrument.symbol rescue nil %> (<%= number_to_percentage(@instrument.open_price, :precision => 0) %>)
+                     <br>
+                     <div style="width:90%;margin:10px">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-complete" style="width:<%=@instrument.open_price %>%;"></div>
+                        </div>
+                    </div>
+                  <br>
+                   <!-- <hr> -->
+                   </div>
+               </div>
+               <div class="card-block" style="margin:10px">
+                  <%=image_tag(@instrument.fundamentals_url)%>
+               </div>
            </div>
+         </div>
+        </a>
+
+         <% end %>
+
+
          </div>
        </div>
        <!-- END PANEL -->
      </div>
 
  <% end %>
-
-         

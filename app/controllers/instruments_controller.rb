@@ -10,6 +10,7 @@ class InstrumentsController < ApplicationController
 
     @instruments_count = Instrument.find_by_sql("select count(*) as c from instruments").map(&:c)
 
+
   end
 
   def show
@@ -20,10 +21,10 @@ class InstrumentsController < ApplicationController
       @instrument = Instrument.find_by_symbol(params[:symbol])
     end
 
-    @instrument.get_fundamental_info(current_user.api_keychain["robinhood"])
-    @instrument.update_quote_data(current_user.api_keychain["robinhood"])
+    # @instrument.get_fundamental_info(current_user.api_keychain["robinhood"])
+    # @instrument.update_quote_data(current_user.api_keychain["robinhood"])
 
-    @response = Robinhood.quote(current_user.api_keychain["robinhood"],@instrument.symbol)
+    # @response = Robinhood.quote(current_user.api_keychain["robinhood"],@instrument.symbol)
   end
 
   def search_instruments

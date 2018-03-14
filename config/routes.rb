@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root to: "orders#index"
+  #root to: "orders#index"
+  root 'landing_page#index'
 
   devise_for :users, controllers: {
       confirmations: 'users/confirmations',
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   get 'trades/stats' => 'trades#stats', :as => :trades_stats
   get 'orders/update_users_orders' => 'orders#update_users_orders', :as => :update_users_orders
   get 'brokers' => 'brokers#index', :as => :brokers_path
+  get 'landing_page' => 'landing_page#index', :as => :landing_page_path
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

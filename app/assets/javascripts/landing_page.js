@@ -1,0 +1,12 @@
+//= require startuply/assets/js/jquery-2.1.4.min
+//= require startuply/assets/js/jquery.flexslider-min
+//= require startuply/assets/js/jquery.appear
+//= require startuply/assets/js/jquery.plugin
+//= require startuply/assets/js/jquery.countdown
+//= require startuply/assets/js/jquery.waypoints.min
+//= require startuply/assets/js/jquery.validate.min
+//= require startuply/assets/js/bootstrap.min
+//= require startuply/assets/js/toastr.min
+//= require startuply/assets/js/startuply
+//= require startuply/assets/js/html5shiv
+//= require startuply/assets/js/respond.min

@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
   <meta charset="utf-8"/>
-  <title>Alpha Spire</title>
+  <title>8trac</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <link rel="apple-touch-icon" href="<%= image_path('ico/60.png') %>">
   <link rel="apple-touch-icon" sizes="76x76" href="<%= image_path('ico/76.png') %>">
@@ -31,6 +31,7 @@
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
+
 <body class="fixed-header">
 <!-- BEGIN SIDEBAR -->
 <div class="page-sidebar" data-pages="sidebar">
@@ -38,7 +39,7 @@
   </div>
   <!-- BEGIN SIDEBAR HEADER -->
   <div class="sidebar-header">
-    <img style="padding-left:40px" src="<%= image_path('newalphalogo1.png') %>" alt="logo" class="brand" data-src="<%= image_path('newalphalogo1.png') %>" data-src-retina="<%= image_path('newalphalogo1.png') %>" height="40" width=180>
+    <img style="padding-left:40px" src="<%= image_path('landing-img/8trac_logo_trans_white_full.png') %>" alt="logo" class="brand" data-src="<%= image_path('landing-img/8trac_logo_trans_white_full.png') %>" data-src-retina="<%= image_path('landing-img/8trac_logo_trans_white_full.png') %>" height="40">
     <!--
     <div class="sidebar-header-controls">
       <button data-pages-toggle="#appMenu" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" type="button">
@@ -140,7 +141,7 @@
     <div class=" pull-left sm-table">
       <div class="header-inner">
         <div class="brand inline">
-          <img style="padding-left:50px" src="<%= image_path('newalphalogo1.png') %>" alt="logo" data-src="<%= image_path('newalphalogo1.png') %>" data-src-retina="<%= image_path('newalphalogo1.png') %>" height="40" width=190>
+          <img style="padding-left:50px" src="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" alt="logo" data-src="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" data-src-retina="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" height="40" width=>
           <!-- <span class="text-master"> 8trac</span> -->
         </div>
         <!-- BEGIN NOTIFICATION DROPDOWN -->
@@ -261,7 +262,7 @@
       <div class="copyright sm-text-center">
         <p class="small no-margin pull-left sm-pull-reset">
           <span class="hint-text">Copyright © 2017</span>
-          <span class="font-montserrat">ALPHASPIRE</span>.
+          <span class="font-montserrat">8trac</span>.
           <span class="hint-text">All rights reserved.</span>
           <span class="sm-block"><a href="#" class="m-l-10 m-r-10">Terms of use</a> | <a href="#" class="m-l-10">Privacy Policy</a>
                         </span>
@@ -622,7 +623,7 @@
   <!-- END Overlay Content !-->
 </div>
 <!-- END OVERLAY -->
-
+</div>
   <!-- JS at bottom of page to improve load time, and only loaded once with 'data-turbolinks-eval' == false  -->
   <%= javascript_include_tag "application", params[:controller], 'data-turbolinks-track' => true, 'data-turbolinks-eval' => false %>
 </body>

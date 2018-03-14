@@ -25,6 +25,11 @@
               <%= distance_of_time_in_words @instrument.closing_date, DateTime.now.in_time_zone rescue nil %> Remaining <br><br>
               <b>Description</b><br>
               <%= @instrument.description %>
+              <div  style='text-align:center' width=100%>
+                <br>
+                <br>
+                <button class="btn btn-success btn-cons">Contribute</button>
+              </div>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ function my5() {
      $("#fans").width( "5%" );
      document.getElementById("artist_percent").innerHTML = "95%";
      document.getElementById("fan_percent").innerHTML = "5%";
-
+     document.getElementById("fund-summary-percent").innerHTML = "5%";
 
 }
 function my10() {
@@ -24,6 +24,7 @@ function my10() {
      $("#fans").width( "10%" );
      document.getElementById("artist_percent").innerHTML = "90%";
      document.getElementById("fan_percent").innerHTML = "10%";
+    document.getElementById("fund-summary-percent").innerHTML = "10%";
 
 }
 function my15() {
@@ -31,21 +32,27 @@ function my15() {
      $("#fans").width( "15%" );
      document.getElementById("artist_percent").innerHTML = "85%";
      document.getElementById("fan_percent").innerHTML = "15%";
-
+    document.getElementById("fund-summary-percent").innerHTML = "15%";
 }
 function my20() {
      $("#artist").width( "80%" );
      $("#fans").width( "20%" );
      document.getElementById("artist_percent").innerHTML = "80%";
      document.getElementById("fan_percent").innerHTML = "20%";
-
+    document.getElementById("fund-summary-percent").innerHTML = "20%";
 }
 function my25() {
      $("#artist").width( "75%" );
      $("#fans").width( "25%" );
      document.getElementById("artist_percent").innerHTML = "75%";
      document.getElementById("fan_percent").innerHTML = "25%";
+    document.getElementById("fund-summary-percent").innerHTML = "25%";
 
+}
+
+function aGive(el){
+    var amount = el.innerText;
+    document.getElementById("fund-summary-amount").innerHTML = amount;
 }
 </script>
 
@@ -65,6 +72,13 @@ function my25() {
         <div class="m-t-15">
         <p class="all-caps fs-12 bold">
         </p>
+          <div style="font-weight: bold; font-size: 20px;">
+            Offering
+            <span id="fund-summary-percent">5%</span>
+            for
+            <span id="fund-summary-amount">$2.5k</span>
+          </div>
+          <br>
         <form role="form">
 
           <div class="form-group-attached">
@@ -121,11 +135,11 @@ function my25() {
 
 
             <div class="btn-group mr-2" role="group" aria-label="First group">
-              <button type="button" onclick="my5()" class="btn btn-lg btn-primary">5%</button>
-              <button type="button" onclick="my10()" class="btn btn-lg btn-success">10%</button>
-              <button type="button" onclick="my15()" class="btn btn-lg btn-complete">15%</button>
-              <button type="button"  onclick="my20()" class="btn btn-lg btn-warning">20%</button>
-              <button type="button" onclick="my25()" class="btn btn-lg btn-danger">25%</button>
+              <button type="button" onclick="my5()" class="btn btn-lg">5%</button>
+              <button type="button" onclick="my10()" class="btn btn-lg">10%</button>
+              <button type="button" onclick="my15()" class="btn btn-lg">15%</button>
+              <button type="button"  onclick="my20()" class="btn btn-lg">20%</button>
+              <button type="button" onclick="my25()" class="btn btn-lg">25%</button>
 
 
             </div>
@@ -144,11 +158,11 @@ function my25() {
 
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
-              <button type="button" class="btn btn-lg  btn-primary">2.5k</button>
-              <button type="button" class="btn btn-lg btn-success">5k</button>
-              <button type="button" class="btn btn-lg btn-complete">10k</button>
-              <button type="button" class="btn btn-lg btn-warning">15k</button>
-              <button type="button" class="btn btn-lg btn-danger">25k</button>
+              <button type="button" onclick="aGive(this)" class="btn btn-lg">2.5k</button>
+              <button type="button" onclick="aGive(this)" class="btn btn-lg">5k</button>
+              <button type="button" onclick="aGive(this)" class="btn btn-lg">10k</button>
+              <button type="button" onclick="aGive(this)" class="btn btn-lg ">15k</button>
+              <button type="button" onclick="aGive(this)" class="btn btn-lg">25k</button>
 
             </div>
 

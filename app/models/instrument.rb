@@ -175,4 +175,25 @@ class Instrument < ActiveRecord::Base
           end
       end
 
+      def self.new_instance(params)
+        puts "\n\n\n#{params}\n\n"
+        i = Instrument.new
+        i.name = params[:title]
+        i.symbol = params[:sub_title]
+        i.description = params[:description]
+        i.save
+      end
+
+      def save_capital_goal(params)
+
+        self.opening_date = params[:opening_date]
+        self.closing_date = params[:closing_date]
+        self.total_supply = params[:total_supply]
+        self.participant_limit = params[:participant_limit]
+        self.rights_for_revenue = params[:rights_for_revenue]
+        self.fundraising_amount = params[:fundraising_amount].to_f
+        self.save
+
+      end
+
 end

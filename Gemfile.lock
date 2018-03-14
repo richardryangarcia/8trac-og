@@ -82,9 +82,9 @@ GEM
       sprockets (> 2, < 4)
       tilt
 
+    libv8 (3.16.14.19)
 
-
-    libv8 (3.16.14.19-x86_64-darwin-15)
+    #libv8 (3.16.14.19-x86_64-darwin-15)
 
     loofah (2.2.0)
       crass (~> 1.0.2)

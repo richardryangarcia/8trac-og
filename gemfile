@@ -12,11 +12,6 @@ gem 'will_paginate'
 
 gem 'simple_form', '~> 3.1.0'
 
-<<<<<<< HEAD
-=======
-#gem 'ethereum.rb'
-
->>>>>>> cd3a6a427134faee0b62aba3bdd543aa31672a06
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -61,7 +56,3 @@ end
 gem 'execjs'
 gem 'therubyracer'
 gem 'less-rails', '~> 2.7.1'
-<<<<<<< HEAD
-
-=======
->>>>>>> cd3a6a427134faee0b62aba3bdd543aa31672a06

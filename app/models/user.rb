@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
     earliest_date = Trade.find_by_sql("select min(closing_last_transaction_datetime) from trades where user_id = #{self.id}")
     return earliest_date
   end
+
+  def setup_blockchain_instance
+
+  end
 end

@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   # layout 'sidenav'
 
   def index
+
     #@order = Order.new
 
     # if params[:page] && params[:page].to_i > 1

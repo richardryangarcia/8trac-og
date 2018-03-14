@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :brokers
   resources :user_brokers
 
+  get 'capital_raise_config/capital_raise_config_advanced' => 'capital_raise_config#capital_raise_config_advanced', :as => :capital_raise_config_advanced_path
+  get 'capital_raise_config/index' => 'capital_raise_config#index', :as => :capital_raise_config_path
+  get 'capital_raise_config/project_setup' => 'capital_raise_config#project_setup', :as => :capital_raise_config_project_setup_path
   get 'users_custom/index' => 'users_custom#index', :as => :users_custom_path
   match 'orders/index' => 'orders#index', :as => :orders_path, via: [:get,:post]
     match 'instruments/test_remote' => 'instruments#test_remote', :as => :instruments_test_remote, via: [:get,:post]

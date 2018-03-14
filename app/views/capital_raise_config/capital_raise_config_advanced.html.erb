@@ -2,13 +2,59 @@
 .border-left {
 border-left: 1px solid #ddd;
 }
+.btn-toolbar{
+  display: inline-block;
+}
+.span12 {
+  text-align: center;
+}
 </style>
+
+<script>
+function my5() {
+     $("#artist").width( "95%" );
+     $("#fans").width( "5%" );
+     document.getElementById("artist_percent").innerHTML = "95%";
+     document.getElementById("fan_percent").innerHTML = "5%";
+
+
+}
+function my10() {
+     $("#artist").width( "90%" );
+     $("#fans").width( "10%" );
+     document.getElementById("artist_percent").innerHTML = "90%";
+     document.getElementById("fan_percent").innerHTML = "10%";
+
+}
+function my15() {
+     $("#artist").width( "85%" );
+     $("#fans").width( "15%" );
+     document.getElementById("artist_percent").innerHTML = "85%";
+     document.getElementById("fan_percent").innerHTML = "15%";
+
+}
+function my20() {
+     $("#artist").width( "80%" );
+     $("#fans").width( "20%" );
+     document.getElementById("artist_percent").innerHTML = "80%";
+     document.getElementById("fan_percent").innerHTML = "20%";
+
+}
+function my25() {
+     $("#artist").width( "75%" );
+     $("#fans").width( "25%" );
+     document.getElementById("artist_percent").innerHTML = "75%";
+     document.getElementById("fan_percent").innerHTML = "25%";
+
+}
+</script>
+
 <!-- START PANEL -->
 
 <div class="container-fluid container-fixed-lg bg-white">
 <div class="panel panel-transparent">
   <div class="panel-heading">
-    <div class="panel-title">Advance Capital Raise for Project Configuration
+    <div class="panel-title" id="test">New Project Capital Raise
     </div>
     <div class="clearfix"></div>
   </div>
@@ -46,81 +92,90 @@ border-left: 1px solid #ddd;
         <div class="col-sm-6">
         <div class="form-group form-group-default">
         <label>Closing Date</label>
-        <div class="row">
-            <div class='col-sm-6'>
-                <div class="form-group">
-                    <div class='input-group date myDatepicker'>
-                        <input type='text' class="form-control">
-                        <span class="input-group-addon">
-                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
-        </div>
-
-        <div class="row">
-        <div class="col-sm-6">
-        <div class="form-group form-group-default">
-        <label>Total Supply</label>
         <div class="container">
           <div class="row">
               <div class='col-sm-6'>
                   <div class="form-group">
-                      <div class='input-group'>
+                      <div class='input-group date myDatepicker'>
                           <input type='text' class="form-control">
+                          <span class="input-group-addon">
+                              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                          </span>
                       </div>
                   </div>
               </div>
+            </div>
           </div>
         </div>
         </div>
         </div>
-        <div class="col-sm-6">
+
+    <div class="row">
+
+      <div class="col-sm-6">
+
         <div class="form-group form-group-default">
-        <label>Participant Limit</label>
-        <div class="row">
-            <div class='col-sm-6'>
-                <div class="form-group">
-                    <div class='input-group'>
-                        <input type='text' class="form-control">
-                    </div>
-                </div>
+        <label>Crowd Sale Rights</label>
+          <div class="span12" style="text-align: center;">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+              <button type="button" onclick="my5()" class="btn btn-lg btn-primary">5%</button>
+              <button type="button" onclick="my10()" class="btn btn-lg btn-success">10%</button>
+              <button type="button" onclick="my15()" class="btn btn-lg btn-complete">15%</button>
+              <button type="button"  onclick="my20()" class="btn btn-lg btn-warning">20%</button>
+              <button type="button" onclick="my25()" class="btn btn-lg btn-danger">25%</button>
+
+
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
 
-        <div class="row">
-        <div class="col-sm-6">
-        <div class="form-group form-group-default">
-        <label>Rights for Streaming Revenue (%)</label>
-        <select class="cs-select cs-skin-slide" data-init-plugin="cs-skin-slide">
-          <option value="">5%</option>
-          <option value="">15%</option>
-          <option value="">25%</option>
-        </select>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        </div>
-        </div>
-        <div class="col-sm-6">
+
+      <div class="col-sm-6">
+
         <div class="form-group form-group-default">
         <label>Fund Raising Amount ($)</label>
-        <select class="cs-select cs-skin-slide" data-init-plugin="cs-skin-slide">
-          <option value="">2,500</option>
-          <option value="">5,000</option>
-          <option value="">10,000</option>
-          <option value="">15,000</option>
-          <option value="">20,000</option>
-          <option value="">25,000</option>
-        </select>
+        <div class="span12" style="text-align: center;">
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+              <button type="button" class="btn btn-lg  btn-primary">2.5k</button>
+              <button type="button" class="btn btn-lg btn-success">5k</button>
+              <button type="button" class="btn btn-lg btn-complete">10k</button>
+              <button type="button" class="btn btn-lg btn-warning">15k</button>
+              <button type="button" class="btn btn-lg btn-danger">25k</button>
+
+            </div>
+
         </div>
+      </div>
         </div>
-        </div>
+
+      </div>
+      </div>
+
+
+
+      <table style="width:100%">
+<tbody>
+<tr>
+<td style="width:75%;height:30px" id="artist" class="bg-success text-white text-center fs-14 p-t-5 p-b-5">
+Artist
+<div class="fs-12" id="artist_percent">75%</div>
+</td>
+<td style="width:25%;height:30px" id="fans" class="bg-danger text-white text-center fs-14 p-t-5 p-b-5">Fans
+<div class="fs-12" id="fan_percent">25%</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+
 
         <div class="form-group form-group-default">
         <label>Royalty Types</label>
@@ -148,6 +203,12 @@ border-left: 1px solid #ddd;
 
       </table>
     </div>
+
+    <span class="pull-right" style="margin-bottom:10px;">
+      <a class="btn btn-success" href="/capital_raise_config/capital_raise_config_advanced" role="button">Submit</a>
+
+    </span>
+  </br>
   </div>
 </div>
 </div>

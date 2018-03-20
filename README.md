@@ -5,6 +5,9 @@
 [Hector Zarate](https://github.com/hectorzarate)
 0x72e8088772BE332a95A289F3aC47f83a39675dDd
 
+[Richard Garcia](https://github.com/rgarcia1129)
+0xA707F7C264d25E22189760eA8CC42649F1cfd5A8
+
 
 
 ## Demo 

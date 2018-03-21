@@ -14,6 +14,12 @@ David Lindsay
 [Omar Castro](https://github.com/Xelepam)
 0xC1Aa4B2c9e4D0fDE29E65b8a0F70603c6B46c70b
 
+[Zachary Rodriguez](https://github.com/zachrdz)
+0x177dCBa4e916702F6826d1cb260D6adEb539924e
+
+[Samantha Campos](https://github.com/samanthacampos)
+0x565F3f7e6D4B9e0bfCd3CF417bd7C4a2026483Fd
+
 ## Demo 
 https://youtu.be/jNU2J8R50u0
 

@@ -15,8 +15,7 @@
           <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user
         Comman Practice Followed
         -->
-          <th style="width:20%">ID</th>
-          <th style="width:20%">Email</th>
+          <th style="width:20%">User</th>
           <th style="width:29%">Last Sign In</th>
           <th style="width:15%">Created At</th>
           <th style="width:15%">Updated At</th>
@@ -25,11 +24,8 @@
         <tbody>
         <% @users.each do |user| %>
         <tr>
-          <td class="v-align-middle ">
-            <p><%= user.id %></p>
-          </td>
           <td class="v-align-middle">
-            <p><%= user.email %></p>
+            <p><%= user.email.split('@', 2).first %></p>
           </td>
           <td class="v-align-middle">
             <p><%= user.last_sign_in_at %></p>

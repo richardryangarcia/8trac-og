@@ -16,6 +16,7 @@
   <meta content="" name="author"/>
 
   <%= stylesheet_link_tag 'application', params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+  <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
 
   <!--[if lte IE 9]>
   <link href="/pages/css/ie9.css?v=pages-v1.0.0" rel="stylesheet" type="text/css"/>
@@ -54,38 +55,31 @@
   <!-- BEGIN SIDEBAR MENU -->
   <div class="sidebar-menu">
     <ul class="menu-items">
-      <li class="">
-        <%= link_to :capital_raise_config_path do %>
+      <!-- <li class="">
+        <%#= link_to :capital_raise_config_path do %>
             <span class="title">Capital Raise Config</span>
-        <% end %>
+        <%# end %>
         <span class="icon-thumbnail ">
           <i class="pg-credit_card_line"></i>
         </span>
       </li>
       <li class="">
-        <%= link_to :capital_raise_config_project_setup_path do %>
+        <%#= link_to :capital_raise_config_project_setup_path do %>
             <span class="title">Project Setup</span>
-        <% end %>
+        <%# end %>
         <span class="icon-thumbnail ">
           <i class="pg-layouts3"></i>
         </span>
       </li>
       <li class="">
-        <%= link_to :capital_raise_config_advanced_path do %>
+        <%#= link_to :capital_raise_config_advanced_path do %>
             <span class="title">Advanced Capital Raise Setup</span>
-        <% end %>
+        <%# end %>
         <span class="icon-thumbnail ">
           <i class="pg-charts"></i>
         </span>
-      </li>
-      <li class="">
-        <%= link_to :users_custom_path do %>
-            <span class="title">Users</span>
-        <% end %>
-        <span class="icon-thumbnail ">
-          <i class="pg-contact_book"></i>
-        </span>
-      </li>
+      </li> -->
+
       <!--<li class="">
         <%#= link_to :brokers_path do %>
             <span class="title">Brokers</span>
@@ -94,9 +88,9 @@
           <i class="pg-contact_book"></i>
         </span>
       </li>-->
-      <!--<li class="">
+      <li class="">
         <a href="javascript:;">
-          <span class="title">Robinhood</span>
+          <span class="title">For Artists</span>
           <span class=" arrow"></span>
         </a>
         <span class="icon-thumbnail">
@@ -104,31 +98,23 @@
         </span>
         <ul class="sub-menu">
           <li class="">
-            <%#= link_to "Orders", :orders_path %>
-            <span class="icon-thumbnail">O</span>
+            <%= link_to :capital_raise_config_project_setup_path do %>
+                <span class="title">New Project</span>
+            <% end %>
+            <span class="icon-thumbnail ">
+              <i class="pg-layouts3"></i>
+            </span>
           </li>
           <li class="">
-            <%#= link_to "Trades", :trades_index %>
-            <span class="icon-thumbnail">T</span>
-          </li>
-          <li class="">
-            <%#= link_to "Accounts", :accounts_path %>
-            <span class="icon-thumbnail">A</span>
-          </li>
-          <li class="">
-            <%#= link_to "Stats", :trades_stats %>
-            <span class="icon-thumbnail">S</span>
-          </li>
-          <li class="">
-            <%#= link_to "Distributions", :trades_return_distributions %>
-            <span class="icon-thumbnail">D</span>
-          </li>
-          <li class="">
-            <%#= link_to "Holdings", :trades_holding_distributions %>
-            <span class="icon-thumbnail">H</span>
+            <%= link_to :capital_raise_config_advanced_path do %>
+                <span class="title">Project Setup</span>
+            <% end %>
+            <span class="icon-thumbnail ">
+              <i class="pg-charts"></i>
+            </span>
           </li>
         </ul>
-      </li>-->
+      </li>
     </ul>
     <div class="clearfix"></div>
   </div>
@@ -165,14 +151,16 @@
     <div class=" pull-left sm-table">
       <div class="header-inner">
         <div class="brand inline">
-          <img style="padding-left:50px" src="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" alt="logo" data-src="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" data-src-retina="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" height="40" width=>
+          <a href="/instruments/index">
+          <img  style="padding-left:50px" src="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" alt="logo" data-src="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" data-src-retina="<%= image_path('landing-img/8trac_logo_trans_black_full.png') %>" height="40" width=>
           <!-- <span class="text-master"> 8trac</span> -->
+        </a>
         </div>
         <!-- BEGIN NOTIFICATION DROPDOWN -->
         <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
           <li class="p-r-15 inline">
             <div class="dropdown">
-              <a href="javascript:;" id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
+              <a href="" id="" class="icon-set globe-fill" data-toggle="">
                 <span class="bubble"></span>
               </a>
               <div class="dropdown-menu notification-toggle" role="menu" aria-labelledby="notification-center">

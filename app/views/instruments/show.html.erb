@@ -1,7 +1,10 @@
-
+<%# TODO: x number of people have contributed to this initial music offering, have it be a col in the db, then edit migration file %>
+<%# TODO: comments/ share/ "Send this to a -band_namme- fan you know!" , big social buttons %>
+<%# TODO: https://randomuser.me/ make a new div to show profile pics of everyone that has contributed %>
 <% if @instrument %>
-    <div class="widget-12 panel no-border widget-loader-circle no-margin">
 
+
+    <div class="widget-12 panel no-border widget-loader-circle no-margin">
       <div class="panel-body" >
         <div class="row">
           <div class="col-xlg-8 ">
@@ -21,18 +24,40 @@
                 <%=image_tag(@instrument.fundamentals_url)%>
             </div>
             <div class="col-md-6">
-              <div style="color:green"><h2><%= number_to_currency(@instrument.fundraising_amount * (@instrument.open_price / 100)) %> of <%= number_to_currency(@instrument.fundraising_amount)%></h2></div>
-              <%= distance_of_time_in_words @instrument.closing_date, DateTime.now.in_time_zone rescue nil %> Remaining <br><br>
+              <div style="color:green"><h2><%= number_to_currency(10000 * (@instrument.open_price / 100)) %> of <%= number_to_currency(10000)%></h2></div>
+              <% if @instrument.status == 'Funding in Progress' %>
+                <%= distance_of_time_in_words DateTime.yesterday, DateTime.now.in_time_zone rescue nil %> Remaining <br><br>
+              <% end %>
+              <b>Status </b>
+              <%= @instrument.status %><br><br>
               <b>Description</b><br>
               <%= @instrument.description %>
+              <% if @instrument.status == 'Released' %>
+              <div  style='text-align:center' width=100%>
+                <br>
+                <br>
+                <button class="btn btn-success btn-cons">Buy</button>
+              </div>
+              <% elsif @instrument.status == 'Recording' or @instrument.status == 'Mastering'  %>
+              <div  style='text-align:center' width=100%>
+                <br>
+                <br>
+                <button class="btn btn-success btn-cons">Pre Order</button>
+              </div>
+              <% else%>
               <div  style='text-align:center' width=100%>
                 <br>
                 <br>
                 <button class="btn btn-success btn-cons">Contribute</button>
               </div>
+              <% end %>
+
             </div>
           </div>
         </div>
+
+
+
       </div>
 
 

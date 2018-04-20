@@ -42,13 +42,17 @@
                    </div>
                </div>
                <% if @instrument.status == 'Released' %>
-               <div style="position: absolute;top: 63px;background-color: #10CFBD;width:100%;text-align:center;">
-                 <font style="text-align:center;margin:3px;"color="white"><i>R E L E A S E D</i></font>
+               <div style="position: absolute;top: 63px;background-color: #10CFBD;width:100%;text-align:center;height:35px;">
+                 <div style="vertical-align:middle; margin:10px">
+
+                 <font style="text-align:center;"color="white"><i><b>R E L E A S E D</b></i></font>
+                </div>
                </div>
                <%elsif @instrument.status == 'Mastering' or @instrument.status == 'Recording'%>
-               <div style="position: absolute;top: 63px;background-color: #6D5CAE;clear:both;width:100%;text-align:center;">
-
-                 <font style="text-align:center;margin:3px"color="white"><i>F U N D E D</i></font>
+               <div style="position: absolute;top: 63px;background-color: #6D5CAE;clear:both;width:100%;text-align:center;height:40px;">
+                 <div style="vertical-align:middle; margin:10px">
+                 <font style="text-align:center;margin:3px"color="white"><i><b>F U N D E D</b></i></font>
+               </div>
                </div>
                <% end %>
                <div class="card-block" style="margin:0px">

@@ -1,6 +1,8 @@
 <%# TODO: x number of people have contributed to this initial music offering, have it be a col in the db, then edit migration file %>
 <%# TODO: comments/ share/ "Send this to a -band_namme- fan you know!" , big social buttons %>
 <%# TODO: https://randomuser.me/ make a new div to show profile pics of everyone that has contributed %>
+<%= render :partial => 'buy_modal' %>
+
 <% if @instrument %>
 
 
@@ -32,25 +34,23 @@
               <%= @instrument.status %><br><br>
               <b>Description</b><br>
               <%= @instrument.description %>
-              <% if @instrument.status == 'Released' %>
+
               <div  style='text-align:center' width=100%>
                 <br>
                 <br>
-                <button class="btn btn-success btn-cons">Buy</button>
+                <button class="btn btn-success btn-cons" data-toggle="modal" data-target="#myModal">
+                  <% if @instrument.status == 'Released' %>
+
+                    Buy
+                  <% elsif @instrument.status == 'Recording' or @instrument.status == 'Mastering'  %>
+                    Pre Order
+                  <% else%>
+                    Contribute
+                  <% end %>
+                </button>
               </div>
-              <% elsif @instrument.status == 'Recording' or @instrument.status == 'Mastering'  %>
-              <div  style='text-align:center' width=100%>
-                <br>
-                <br>
-                <button class="btn btn-success btn-cons">Pre Order</button>
-              </div>
-              <% else%>
-              <div  style='text-align:center' width=100%>
-                <br>
-                <br>
-                <button class="btn btn-success btn-cons">Contribute</button>
-              </div>
-              <% end %>
+
+
 
             </div>
           </div>

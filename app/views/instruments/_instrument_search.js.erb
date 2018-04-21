@@ -11,3 +11,13 @@
   // Reload brokers list partial
   var brokerListDiv = $('#overlay-search');
   brokerListDiv.html("<%= escape_javascript(render partial: "show", locals: {}) %>");
+
+  var filterModalDiv = $('#filter_modal');
+
+  filterModalDiv.on("click", '.modalToggler', function(e) {
+      if (e.originalEvent.isTrusted) { // Click event triggered by mouse
+              // Display modal
+              $('#modal').modal('show');
+          }
+
+  });

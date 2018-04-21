@@ -1,5 +1,9 @@
 class Instrument < ActiveRecord::Base
 
+  def generate_users
+    
+  end
+
   def self.process_instrument
 
       @results["results"].each do |r|
